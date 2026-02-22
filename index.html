@@ -1,825 +1,615 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enrich Ministries - Home</title>
-    <meta name="description" content="Enrich Ministries offers comprehensive worship and music courses to equip believers for ministry. Join our Academy today.">
-    <meta name="keywords" content="Worship Course, Music Course, Ministry Training, Guitar Lessons, Music Theory, Christian Education">
+    <title>Enrich 2026 | Worship Music Workshop</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Fonts: Bebas Neue (Headers), Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        midnight: '#0B161E',
+                        cyan: '#00FFFF',
+                        gold: '#FFD700',
+                        offwhite: '#FFFFFF',
+                        graytext: '#E5E7EB',
+                    },
+                    fontFamily: {
+                        display: ['"Bebas Neue"', 'sans-serif'],
+                        body: ['"Inter"', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-glow-cyan': 'pulse-cyan 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'pulse-glow-gold': 'pulse-gold 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'pulse-cyan': {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)' },
+                            '50%': { boxShadow: '0 0 30px rgba(0, 255, 255, 0.8)' },
+                        },
+                        'pulse-gold': {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(255, 215, 0, 0.5)' },
+                            '50%': { boxShadow: '0 0 30px rgba(255, 215, 0, 0.8)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body {
+            background-color: #0B161E;
+            color: #E5E7EB;
+            overflow-x: hidden;
+        }
+
+        /* Hero Background with Parallax Overlay */
         .hero-bg {
-            background-image: linear-gradient(rgba(28, 25, 23, 0.7), rgba(28, 25, 23, 0.7)), url('https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-image: linear-gradient(180deg, rgba(11, 22, 30, 0.7) 0%, rgba(11, 22, 30, 0.95) 100%), url('https://images.unsplash.com/photo-1540039155732-684735035727?auto=format&fit=crop&w=2000&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Panels */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Neon Glow Hover Effects */
+        .hover-glow-cyan:hover {
+            border-color: #00FFFF;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        .hover-glow-gold:hover {
+            border-color: #FFD700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        /* Buttons */
+        .btn-neon-cyan {
+            background-color: transparent;
+            border: 2px solid #00FFFF;
+            color: #00FFFF;
+            text-shadow: 0 0 5px rgba(0,255,255,0.5);
+            box-shadow: inset 0 0 10px rgba(0,255,255,0.2), 0 0 10px rgba(0,255,255,0.2);
+            transition: all 0.2s ease;
+        }
+        .btn-neon-cyan:hover {
+            background-color: #00FFFF;
+            color: #0B161E;
+            box-shadow: 0 0 20px rgba(0,255,255,0.6);
+            transform: scale(1.05);
+        }
+
+        .btn-solid-cyan {
+            background-color: #00FFFF;
+            color: #0B161E;
+            box-shadow: 0 0 15px rgba(0,255,255,0.4);
+            transition: all 0.2s ease;
+        }
+        .btn-solid-cyan:hover {
+            box-shadow: 0 0 25px rgba(0,255,255,0.8);
+            transform: scale(1.05) rotate(-1deg);
+        }
+
+        /* Text Utilities */
+        .text-neon-cyan { text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
+        .text-neon-gold { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0B161E; }
+        ::-webkit-scrollbar-thumb { background: #00FFFF; border-radius: 4px; }
+
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: floatUp linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            20% { opacity: 0.8; }
+            80% { opacity: 0.4; }
+            100% { transform: translateY(-20vh) scale(1.5); opacity: 0; }
         }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-800 flex flex-col min-h-screen">
+<body class="font-body antialiased selection:bg-cyan selection:text-midnight">
 
-    <!-- Header Section -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <!-- Restored Image Logo with Fallback -->
-                    <img src="https://enrichministries.in/img/logo.png" 
-                         alt="Enrich Ministries Logo" 
-                         class="h-20 w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform duration-300"
-                         onerror="this.onerror=null;this.src='https://via.placeholder.com/150x60?text=Enrich+Ministries';">
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#" class="text-stone-600 hover:text-amber-600 px-3 py-2 font-medium transition-colors">Home</a>
-                    <a href="#academy" class="text-stone-600 hover:text-amber-600 px-3 py-2 font-medium transition-colors">Academy</a>
-                    <a href="#resources" class="text-stone-600 hover:text-amber-600 px-3 py-2 font-medium transition-colors">Resources</a>
-                    <a href="#workshop" class="text-stone-600 hover:text-amber-600 px-3 py-2 font-medium transition-colors">Workshop</a>
-                    <a href="#classes" class="text-stone-600 hover:text-amber-600 px-3 py-2 font-medium transition-colors">Classes</a>
-                    <a href="#about" class="text-stone-600 hover:text-amber-600 px-3 py-2 font-medium transition-colors">About</a>
-                </nav>
+    <!-- CSS Stage Particles -->
+    <div id="particle-container" class="fixed inset-0 pointer-events-none z-0 overflow-hidden mix-blend-screen opacity-40"></div>
 
-                <!-- Right Side Buttons -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="#resource-contact" class="text-stone-500 hover:text-stone-800 font-medium">Contact</a>
-                    <a href="#" class="bg-amber-600 text-white px-5 py-2 rounded-full hover:bg-amber-700 transition-colors font-semibold shadow-sm">Support Us</a>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-midnight/90 backdrop-blur-xl border-b border-white/5 top-0">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center relative z-10">
+            <!-- Branding -->
+            <div class="flex items-center space-x-3 cursor-pointer">
+                <div class="h-10 w-10 rounded-full border border-cyan bg-midnight p-1 flex items-center justify-center overflow-hidden shadow-[0_0_10px_rgba(0,255,255,0.3)]">
+                    <img src="NYM-Icon-v1 LOGO.png" alt="NYM Logo" class="w-full h-full object-contain filter brightness-200">
                 </div>
+                <div class="flex flex-col">
+                    <span class="font-display text-2xl text-offwhite tracking-widest leading-none">AGNYM</span>
+                    <span class="text-[10px] text-cyan font-bold uppercase tracking-widest">Enrich '26</span>
+                </div>
+            </div>
 
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button class="text-stone-600 hover:text-stone-800 focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-8">
+                <div class="flex space-x-8 font-display text-lg uppercase tracking-widest items-center">
+                    <a href="#home" class="hover:text-cyan transition duration-300">Vibe</a>
+                    <a href="#vault" class="hover:text-gold transition duration-300">Tracks</a>
+                    <a href="#playlist" class="hover:text-cyan transition duration-300">Curriculum</a>
+                    <a href="#details" class="hover:text-gold transition duration-300">Info</a>
                 </div>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe12h5dQOfuV4T8M9U8c_XjAtjbfHPkPRDzYT-QdT3d5dmciw/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="px-6 py-2 btn-solid-cyan font-display text-xl tracking-widest rounded-sm uppercase">
+                    Register Now 🔥
+                </a>
+            </div>
+            
+            <!-- Mobile Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-offwhite hover:text-cyan focus:outline-none text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-midnight/95 backdrop-blur-3xl border-t border-white/10 absolute w-full h-screen flex flex-col pt-12 px-6 gap-8 z-40">
+            <a href="#home" class="text-5xl font-display text-white hover:text-cyan transition">Vibe.</a>
+            <a href="#vault" class="text-5xl font-display text-white hover:text-gold transition">Tracks.</a>
+            <a href="#playlist" class="text-5xl font-display text-white hover:text-cyan transition">Curriculum.</a>
+            <a href="#details" class="text-5xl font-display text-white hover:text-gold transition">Info.</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe12h5dQOfuV4T8M9U8c_XjAtjbfHPkPRDzYT-QdT3d5dmciw/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="mt-8 px-8 py-4 btn-solid-cyan text-center uppercase font-display text-3xl tracking-widest rounded-sm">
+                Register Now 🔥
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-bg min-h-screen flex flex-col justify-center relative pt-20 pb-20 overflow-hidden">
+        <!-- Abstract Glows -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan/20 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gold/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 lg:px-12 relative z-10 flex flex-col items-center text-center mt-10">
+            
+            <div class="inline-block px-4 py-1.5 glass-panel border border-cyan/30 text-cyan font-display text-lg tracking-[0.2em] mb-6 rounded-sm text-neon-cyan">
+                // AG National Youth Movement
+            </div>
+            
+            <h1 class="text-7xl md:text-[10rem] lg:text-[12rem] font-display text-offwhite leading-[0.8] tracking-tighter mb-4 drop-shadow-2xl">
+                ENRICH<br>
+                <span class="text-cyan text-neon-cyan">2026</span>
+            </h1>
+            
+            <div class="font-display text-3xl md:text-5xl text-gold uppercase tracking-widest mt-4 mb-6 text-neon-gold transform -rotate-2">
+                Worship That Hits Different.
+            </div>
+            
+            <p class="text-base md:text-lg font-body text-graytext max-w-2xl mx-auto mb-10 leading-relaxed">
+                A 10-day immersive incubator for young musicians & worship leaders. Build community, master your instrument, and encounter God's raw presence.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-5 items-center justify-center">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe12h5dQOfuV4T8M9U8c_XjAtjbfHPkPRDzYT-QdT3d5dmciw/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="px-12 py-4 btn-solid-cyan font-display text-3xl uppercase tracking-widest rounded-sm flex items-center gap-3">
+                    Register Now <i class="fas fa-bolt text-xl"></i>
+                </a>
+                <a href="#vault" class="px-12 py-4 btn-neon-cyan font-display text-3xl uppercase tracking-widest rounded-sm flex items-center gap-3">
+                    Explore Tracks
+                </a>
+            </div>
+
+            <div class="mt-16 glass-panel px-6 py-3 rounded-full flex items-center gap-4 border-white/10">
+                <span class="font-display text-xl text-gold tracking-widest">10 Days of Pursuit</span>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-bg h-[600px] flex items-center justify-center text-center px-4">
-        <div class="max-w-4xl">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-md">
-                Equipping Hearts for <span class="text-amber-500">Worship</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-stone-200 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Empowering the next generation of worship leaders and musicians with spiritual depth and musical excellence.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#worship-course" class="bg-amber-600 text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-amber-700 transition-transform hover:scale-105 shadow-lg">
-                    Join the Academy
-                </a>
-                <a href="#resources" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-white hover:text-stone-900 transition-colors">
-                    Explore Resources
-                </a>
+    <!-- The Vault (Music Tracks) -->
+    <section id="vault" class="py-24 bg-midnight relative border-t border-white/5">
+        <div class="container mx-auto px-4 lg:px-12">
+            <div class="mb-16 text-center">
+                <p class="font-display text-cyan text-xl uppercase tracking-[0.2em] mb-2 text-neon-cyan">// Pick Your Weapon</p>
+                <h2 class="text-6xl md:text-8xl font-display text-offwhite uppercase tracking-tighter">
+                    The Band <span class="text-gold text-neon-gold">Vault.</span>
+                </h2>
+                <p class="text-graytext font-body mt-4 max-w-lg mx-auto">Whether you're holding a guitar for the first time or leading thousands, jump in.</p>
             </div>
-        </div>
-    </section>
 
-    <!-- Worship Course Section (Academy) -->
-    <section id="academy" class="py-20 bg-stone-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <div class="lg:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Worship Guitar" class="rounded-2xl shadow-2xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Guitar -->
+                <div class="glass-panel p-8 rounded-xl hover-glow-cyan border-t-4 border-t-cyan">
+                    <div class="w-16 h-16 rounded-lg bg-cyan/10 flex items-center justify-center mb-6 text-3xl text-cyan">🎸</div>
+                    <h3 class="text-3xl font-display text-offwhite tracking-wider mb-3">Guitar</h3>
+                    <p class="text-graytext font-body text-sm leading-relaxed">Master modern worship vibes. Focus on chord voicing, fingerstyle, and those sweet lead lines.</p>
                 </div>
-                <div class="lg:w-1/2">
-                    <span class="text-amber-600 font-bold uppercase tracking-wider text-sm">Featured Course</span>
-                    <h2 class="text-4xl font-bold text-stone-900 mt-2 mb-6">Complete Worship Guitar Course</h2>
-                    <p class="text-lg text-stone-600 mb-6 leading-relaxed">
-                        Go from absolute beginner to confident worship leader. This interactive course covers essential chords, strumming patterns, dynamics, and the theology of worship. Designed specifically for ministry contexts.
-                    </p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center text-stone-700">
-                            <i class="fas fa-check-circle text-green-500 mr-3"></i> Interactive Chord Labs & Fretboard Tools
-                        </li>
-                        <li class="flex items-center text-stone-700">
-                            <i class="fas fa-check-circle text-green-500 mr-3"></i> 45-Minute Structured Practice Routines
-                        </li>
-                        <li class="flex items-center text-stone-700">
-                            <i class="fas fa-check-circle text-green-500 mr-3"></i> Theology of Worship & Leadership
-                        </li>
-                    </ul>
-                    <!-- Link to the interactive course file -->
-                    <a href="WorshipGuitarInteractiveCourse.html" class="inline-flex items-center bg-stone-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-stone-800 transition-colors">
-                        View Course Syllabus <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+
+                <!-- Keyboard -->
+                <div class="glass-panel p-8 rounded-xl hover-glow-gold border-t-4 border-t-gold">
+                    <div class="w-16 h-16 rounded-lg bg-gold/10 flex items-center justify-center mb-6 text-3xl text-gold">🎹</div>
+                    <h3 class="text-3xl font-display text-offwhite tracking-wider mb-3">Keys</h3>
+                    <p class="text-graytext font-body text-sm leading-relaxed">Unlock progressions, padding, layering sounds, and the art of prophetic flow.</p>
+                </div>
+
+                <!-- Drums -->
+                <div class="glass-panel p-8 rounded-xl hover-glow-cyan border-t-4 border-t-cyan">
+                    <div class="w-16 h-16 rounded-lg bg-cyan/10 flex items-center justify-center mb-6 text-3xl text-cyan">🥁</div>
+                    <h3 class="text-3xl font-display text-offwhite tracking-wider mb-3">Drums</h3>
+                    <p class="text-graytext font-body text-sm leading-relaxed">Find the pocket. Understand dynamics, groove, and patterns that drive the song.</p>
+                </div>
+
+                <!-- Vocals -->
+                <div class="glass-panel p-8 rounded-xl hover-glow-gold border-t-4 border-t-gold">
+                    <div class="w-16 h-16 rounded-lg bg-gold/10 flex items-center justify-center mb-6 text-3xl text-gold">🎤</div>
+                    <h3 class="text-3xl font-display text-offwhite tracking-wider mb-3">Vocals</h3>
+                    <p class="text-graytext font-body text-sm leading-relaxed">Breath control, harmony, range expansion, and carrying the heart of a minister.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Music Course Section -->
-    <section id="music-course" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
-                <div class="lg:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1507838153414-b4b713384ebd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Music Theory" class="rounded-2xl shadow-2xl">
-                </div>
-                <div class="lg:w-1/2">
-                    <span class="text-amber-600 font-bold uppercase tracking-wider text-sm">Upcoming Classes</span>
-                    <h2 class="text-4xl font-bold text-stone-900 mt-2 mb-6">Music Theory & Composition</h2>
-                    <p class="text-lg text-stone-600 mb-6 leading-relaxed">
-                        Unlock the language of music. Understand harmony, composition, and arrangement to elevate your team's sound. Perfect for music directors and aspiring songwriters.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4 mb-8">
-                        <div class="bg-white p-4 rounded-lg shadow-sm border border-stone-200">
-                            <i class="fas fa-music text-amber-500 text-2xl mb-2"></i>
-                            <h4 class="font-bold text-stone-800">Harmony</h4>
-                            <p class="text-sm text-stone-500">Advanced chord voicings.</p>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow-sm border border-stone-200">
-                            <i class="fas fa-pen-nib text-amber-500 text-2xl mb-2"></i>
-                            <h4 class="font-bold text-stone-800">Songwriting</h4>
-                            <p class="text-sm text-stone-500">Lyrical theology & melody.</p>
-                        </div>
-                    </div>
-                    <a href="#" class="inline-flex items-center bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 transition-colors">
-                        Enroll in Music Course <i class="fas fa-graduation-cap ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resources Section -->
-    <section id="resources" class="py-20 bg-stone-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span class="text-amber-600 font-bold uppercase tracking-wider text-sm">Equip Your Team</span>
-            <h2 class="text-4xl font-bold text-stone-900 mt-2 mb-4">Ministry Resources</h2>
-            <p class="text-stone-600 mb-12 max-w-2xl mx-auto">Books, Posters, Audio and Video CDs on guitar, keyboard, drums and more.</p>
             
-            <!-- Books Category -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-bold text-stone-800 mb-8 border-b border-stone-200 pb-2 inline-block">Books</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-center">
-                    
-                    <!-- Book 1: Stringed Praise -->
-                    <div class="bg-white rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 border border-stone-100 flex flex-col items-center group">
-                        <div class="h-56 w-40 bg-stone-200 mb-4 rounded shadow-inner flex items-center justify-center overflow-hidden">
-                            <img src="https://enrichministries.in/img/Stringed_Praise.jpg" alt="Stringed Praise" class="h-full w-full object-cover" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=400&q=80'">
-                        </div>
-                        <h3 class="text-lg font-bold text-stone-800 mb-1">Stringed Praise Vol 1</h3>
-                        <p class="text-stone-500 text-xs mb-3 h-12 overflow-hidden">100+ songs (English) with chords & theory.</p>
-                        <a href="https://pages.razorpay.com/pl_J4aY3SyL9nvgeF/view" target="_blank" class="w-full bg-stone-900 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-amber-600 transition-colors">Buy Now</a>
-                    </div>
-
-                    <!-- Book 2: Thanti Sthuthi -->
-                    <div class="bg-white rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 border border-stone-100 flex flex-col items-center group">
-                        <div class="h-56 w-40 bg-stone-200 mb-4 rounded shadow-inner flex items-center justify-center overflow-hidden">
-                            <img src="https://enrichministries.in/img/Thanti_Sthuthi.jpg" alt="Thanti Sthuthi" class="h-full w-full object-cover" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=400&q=80'">
-                        </div>
-                        <h3 class="text-lg font-bold text-stone-800 mb-1">Thanti Sthuthi Vol 1</h3>
-                        <p class="text-stone-500 text-xs mb-3 h-12 overflow-hidden">100+ songs (Kannada) with chords & theory.</p>
-                        <a href="https://pages.razorpay.com/thantisthuthi" target="_blank" class="w-full bg-stone-900 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-amber-600 transition-colors">Buy Now</a>
-                    </div>
-
-                    <!-- Book 3: Thudhi Thalam -->
-                    <div class="bg-white rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 border border-stone-100 flex flex-col items-center group">
-                        <div class="h-56 w-40 bg-stone-200 mb-4 rounded shadow-inner flex items-center justify-center overflow-hidden">
-                            <img src="https://enrichministries.in/img/Thudhi_Thalam.jpg" alt="Thudhi Thalam" class="h-full w-full object-cover" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=400&q=80'">
-                        </div>
-                        <h3 class="text-lg font-bold text-stone-800 mb-1">Thudhi Thalam Vol 1</h3>
-                        <p class="text-stone-500 text-xs mb-3 h-12 overflow-hidden">100+ songs (Tamil) with chords & theory.</p>
-                        <a href="https://pages.razorpay.com/thudhithalam" target="_blank" class="w-full bg-stone-900 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-amber-600 transition-colors">Buy Now</a>
-                    </div>
-
-                    <!-- Book 4: Ultimate Guitar Chord Dictionary -->
-                    <div class="bg-white rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 border border-stone-100 flex flex-col items-center group">
-                        <div class="h-56 w-40 bg-stone-200 mb-4 rounded shadow-inner flex items-center justify-center overflow-hidden">
-                            <img src="https://enrichministries.in/img/Ultimate_Guitar_Chord_Dictionary.jpg" alt="Guitar Dictionary" class="h-full w-full object-cover" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1525201548942-d8732f6617a0?auto=format&fit=crop&w=400&q=80'">
-                        </div>
-                        <h3 class="text-lg font-bold text-stone-800 mb-1">Guitar Chord Dictionary</h3>
-                        <p class="text-stone-500 text-xs mb-3 h-12 overflow-hidden">All chords with fret diagrams & finger positions.</p>
-                        <a href="#resource-contact" class="w-full bg-white border border-stone-300 text-stone-700 px-4 py-2 rounded-lg font-semibold text-sm hover:bg-stone-100 transition-colors">Contact to Buy</a>
-                    </div>
-
-                    <!-- Book 5: Worship Drummers Handbook -->
-                    <div class="bg-white rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 border border-stone-100 flex flex-col items-center group">
-                        <div class="h-56 w-40 bg-stone-200 mb-4 rounded shadow-inner flex items-center justify-center overflow-hidden">
-                            <img src="https://enrichministries.in/img/Worship_Drummers_Handbook.jpg" alt="Drummers Handbook" class="h-full w-full object-cover" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?auto=format&fit=crop&w=400&q=80'">
-                        </div>
-                        <h3 class="text-lg font-bold text-stone-800 mb-1">Drummers Handbook</h3>
-                        <p class="text-stone-500 text-xs mb-3 h-12 overflow-hidden">Beats for 100 popular songs.</p>
-                        <a href="https://pages.razorpay.com/drumbook" target="_blank" class="w-full bg-stone-900 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-amber-600 transition-colors">Buy Now</a>
-                    </div>
-
-                    <!-- Book 6: Worship Keyboardists Handbook -->
-                    <div class="bg-white rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 border border-stone-100 flex flex-col items-center group">
-                        <div class="h-56 w-40 bg-stone-200 mb-4 rounded shadow-inner flex items-center justify-center overflow-hidden">
-                            <img src="https://enrichministries.in/img/Worship_Keyboardists_Handbook.jpg" alt="Keyboard Handbook" class="h-full w-full object-cover" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?auto=format&fit=crop&w=400&q=80'">
-                        </div>
-                        <h3 class="text-lg font-bold text-stone-800 mb-1">Keyboard Handbook</h3>
-                        <p class="text-stone-500 text-xs mb-3 h-12 overflow-hidden">Chords, finger placements & positions.</p>
-                        <a href="https://pages.razorpay.com/wkhandbook" target="_blank" class="w-full bg-stone-900 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-amber-600 transition-colors">Buy Now</a>
-                    </div>
-
-                    <!-- Book 7: Essential Guitar Scales -->
-                    <div class="bg-white rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 border border-stone-100 flex flex-col items-center group">
-                        <div class="h-56 w-40 bg-stone-200 mb-4 rounded shadow-inner flex items-center justify-center overflow-hidden">
-                            <img src="https://enrichministries.in/img/Essential_Guitar_Scales.jpg" alt="Guitar Scales" class="h-full w-full object-cover" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?auto=format&fit=crop&w=400&q=80'">
-                        </div>
-                        <h3 class="text-lg font-bold text-stone-800 mb-1">Essential Guitar Scales</h3>
-                        <p class="text-stone-500 text-xs mb-3 h-12 overflow-hidden">Scales and info to progress beyond normal.</p>
-                        <a href="#resource-contact" class="w-full bg-white border border-stone-300 text-stone-700 px-4 py-2 rounded-lg font-semibold text-sm hover:bg-stone-100 transition-colors">Contact to Buy</a>
-                    </div>
-                </div>
+            <div class="mt-12 glass-panel p-4 rounded-sm flex items-center justify-center gap-3 border-cyan/30 text-cyan font-display text-xl uppercase tracking-widest text-neon-cyan animate-pulse-glow-cyan max-w-2xl mx-auto text-center">
+                <i class="fas fa-fire"></i> Pro Tip: Every track includes band labs & live encounters!
             </div>
-
-            <!-- Audio & Video Category -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-bold text-stone-800 mb-8 border-b border-stone-200 pb-2 inline-block">Audio & Video CDs</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
-                    
-                    <!-- Audio CD -->
-                    <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-stone-100 text-left">
-                        <div class="flex gap-4">
-                            <div class="h-24 w-24 flex-shrink-0 bg-stone-200 rounded overflow-hidden">
-                                <img src="https://enrichministries.in/img/Worship_Music_Tutorial.jpg" alt="Audio CD" class="h-full w-full object-cover" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?auto=format&fit=crop&w=400&q=80'">
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-bold text-stone-800">Worship Music Tutorial (Audio CD)</h3>
-                                <p class="text-xs text-stone-500 mt-1">90+ backing tracks. English, Kannada, Tamil.</p>
-                            </div>
-                        </div>
-                        <div class="mt-4 bg-white p-3 rounded border border-stone-200">
-                            <p class="text-xs font-bold text-amber-600 mb-2">Sample Tracks (As the Deer):</p>
-                            <ul class="text-xs text-stone-600 space-y-1">
-                                <li><i class="fas fa-play-circle mr-1"></i> Drums & Keys</li>
-                                <li><i class="fas fa-play-circle mr-1"></i> Guitar</li>
-                                <li><i class="fas fa-play-circle mr-1"></i> All Instruments</li>
-                            </ul>
-                        </div>
-                        <a href="#resource-contact" class="block text-center w-full mt-4 bg-white border border-stone-300 text-stone-700 px-4 py-2 rounded-lg font-semibold text-sm hover:bg-stone-100 transition-colors">Contact for CD</a>
-                    </div>
-
-                    <!-- Video CD 1 -->
-                    <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-stone-100 text-left">
-                        <div class="flex gap-4">
-                            <div class="h-24 w-24 flex-shrink-0 bg-stone-200 rounded overflow-hidden">
-                                <img src="https://enrichministries.in/img/Acoustic_Guitar_Tutorial.jpg" alt="Guitar Video" class="h-full w-full object-cover" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=400&q=80'">
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-bold text-stone-800">Acoustic Guitar Tutorial (VCD)</h3>
-                                <p class="text-xs text-stone-500 mt-1">Video lessons for 10 worship songs on Acoustic Guitar.</p>
-                            </div>
-                        </div>
-                        <a href="#resource-contact" class="block text-center w-full mt-8 bg-white border border-stone-300 text-stone-700 px-4 py-2 rounded-lg font-semibold text-sm hover:bg-stone-100 transition-colors">Contact for VCD</a>
-                    </div>
-
-                    <!-- Video CD 2 -->
-                    <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-stone-100 text-left">
-                        <div class="flex gap-4">
-                            <div class="h-24 w-24 flex-shrink-0 bg-stone-200 rounded overflow-hidden">
-                                <img src="https://enrichministries.in/img/Keyboard_Tutorial.jpg" alt="Keyboard Video" class="h-full w-full object-cover" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1595769816263-9b910be24d5f?auto=format&fit=crop&w=400&q=80'">
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-bold text-stone-800">Keyboard Tutorial (VCD)</h3>
-                                <p class="text-xs text-stone-500 mt-1">Video lessons for 10 worship songs on Keyboard.</p>
-                            </div>
-                        </div>
-                        <a href="#resource-contact" class="block text-center w-full mt-8 bg-white border border-stone-300 text-stone-700 px-4 py-2 rounded-lg font-semibold text-sm hover:bg-stone-100 transition-colors">Contact for VCD</a>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Posters Category -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-bold text-stone-800 mb-8 border-b border-stone-200 pb-2 inline-block">Reference Posters</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center max-w-4xl mx-auto">
-                    <!-- Poster 1 -->
-                    <div class="bg-white rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 border border-stone-100 flex flex-col items-center group">
-                        <div class="h-64 w-full bg-stone-200 mb-4 rounded shadow-inner flex items-center justify-center overflow-hidden">
-                             <img src="https://enrichministries.in/img/Guitar_Poster.jpg" alt="Guitar Poster" class="h-full w-full object-contain" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1572947650440-e8a97ef053b2?auto=format&fit=crop&w=400&q=80'">
-                        </div>
-                        <h3 class="text-lg font-bold text-stone-800 mb-1">Guitar Quick Reference</h3>
-                        <p class="text-stone-500 text-xs mb-3">A3 Size (42cm x 30cm). Wall chart.</p>
-                        <a href="#resource-contact" class="w-full bg-white border border-stone-300 text-stone-700 px-4 py-2 rounded-lg font-semibold text-sm hover:bg-stone-100 transition-colors">Contact to Buy</a>
-                    </div>
-
-                    <!-- Poster 2 -->
-                    <div class="bg-white rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 border border-stone-100 flex flex-col items-center group">
-                        <div class="h-64 w-full bg-stone-200 mb-4 rounded shadow-inner flex items-center justify-center overflow-hidden">
-                             <img src="https://enrichministries.in/img/Keyboard_Poster.jpg" alt="Keyboard Poster" class="h-full w-full object-contain" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=400&q=80'">
-                        </div>
-                        <h3 class="text-lg font-bold text-stone-800 mb-1">Keyboard Quick Reference</h3>
-                        <p class="text-stone-500 text-xs mb-3">A3 Size (42cm x 30cm). Wall chart.</p>
-                        <a href="#resource-contact" class="w-full bg-white border border-stone-300 text-stone-700 px-4 py-2 rounded-lg font-semibold text-sm hover:bg-stone-100 transition-colors">Contact to Buy</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Resource Contact Form -->
-            <div id="resource-contact" class="max-w-3xl mx-auto bg-stone-100 rounded-2xl p-8 shadow-inner">
-                <h3 class="text-2xl font-bold text-stone-800 mb-4">Contact for Resources</h3>
-                <p class="text-stone-600 mb-8 text-sm">For resources without a direct buy link, please fill out this form and a representative will contact you.</p>
-                
-                <form class="space-y-4 text-left">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-stone-600 mb-1">Name *</label>
-                            <input type="text" class="w-full p-2 rounded border border-stone-300 focus:border-amber-500 focus:outline-none" required>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-stone-600 mb-1">Phone</label>
-                            <input type="tel" class="w-full p-2 rounded border border-stone-300 focus:border-amber-500 focus:outline-none">
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-stone-600 mb-1">Email *</label>
-                            <input type="email" class="w-full p-2 rounded border border-stone-300 focus:border-amber-500 focus:outline-none" required>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-stone-600 mb-1">Country/Area *</label>
-                            <input type="text" class="w-full p-2 rounded border border-stone-300 focus:border-amber-500 focus:outline-none" required>
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-stone-600 mb-1">Resources Interested In *</label>
-                        <select class="w-full p-2 rounded border border-stone-300 focus:border-amber-500 focus:outline-none bg-white">
-                            <option>All Resources</option>
-                            <option>Stringed Praise (English)</option>
-                            <option>Thudhi Thalam (Tamil)</option>
-                            <option>Thanti Sthuthi (Kannada)</option>
-                            <option>Ultimate Guitar Chord Dictionary</option>
-                            <option>Drummers Handbook</option>
-                            <option>Keyboardists Handbook</option>
-                            <option>Essential Guitar Scales</option>
-                            <option>Audio CD - Worship Guitar Tutorial</option>
-                            <option>Video CD - Acoustic Guitar</option>
-                            <option>Video CD - Keyboard</option>
-                            <option>Posters</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-stone-600 mb-1">Tell us more</label>
-                        <textarea rows="3" class="w-full p-2 rounded border border-stone-300 focus:border-amber-500 focus:outline-none"></textarea>
-                    </div>
-                    <div class="flex justify-end gap-4">
-                        <button type="reset" class="text-stone-500 hover:text-stone-700 text-sm font-semibold">Reset</button>
-                        <button type="submit" class="bg-amber-600 text-white px-6 py-2 rounded-full font-bold hover:bg-amber-700 transition-colors shadow-md">Submit</button>
-                    </div>
-                </form>
-                <div class="mt-6 text-center">
-                     <a href="https://pages.razorpay.com/ewmaRS" target="_blank" class="text-amber-600 font-bold hover:underline">Buy Multiple Resources Now (Razorpay)</a>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- Workshop Section -->
-    <section id="workshop" class="py-20 bg-stone-100 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <span class="text-amber-600 font-bold uppercase tracking-wider text-sm">Equipping the Saints</span>
-                <h2 class="text-4xl font-bold text-stone-900 mt-2 mb-4">Worship Workshops</h2>
-                <p class="text-stone-600 max-w-2xl mx-auto text-lg">
-                    Tools to equip you spiritually and musically. Our workshops focus on two main pillars: Worship Leadership and Worship Music.
-                </p>
+    <!-- Spotify Playlist Style Curriculum -->
+    <section id="playlist" class="py-24 bg-[#080d12] relative border-t border-white/5">
+        <div class="container mx-auto px-4 lg:px-12">
+            
+            <div class="mb-16 text-center">
+                <p class="font-display text-gold text-xl uppercase tracking-[0.2em] mb-2 text-neon-gold">// The Setlist</p>
+                <h2 class="text-6xl md:text-8xl font-display text-offwhite uppercase tracking-tighter">
+                    Deep Dive <span class="text-cyan text-neon-cyan">Curriculum</span>
+                </h2>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
-                <!-- Worship Leadership Course -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-8 border-amber-600">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="bg-amber-100 text-amber-800 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide">30 Hours Duration</div>
-                        <i class="fas fa-users-cog text-3xl text-stone-300"></i>
-                    </div>
-                    <h3 class="text-3xl font-bold text-stone-800 mb-4">Worship Leadership Course</h3>
-                    <p class="text-stone-600 mb-6 leading-relaxed">
-                        A study on the biblical, theological, and practical aspects of Christian worship. Attention is given to leadership issues: nurturing people, working with musicians, strategic planning, and resourcing ministry in the local church context.
-                    </p>
-                    
-                    <div class="mb-6">
-                        <h4 class="font-bold text-stone-800 mb-2 flex items-center"><i class="fas fa-bullseye text-amber-600 mr-2"></i> Objectives</h4>
-                        <ul class="list-disc list-inside text-stone-600 text-sm space-y-2 pl-2">
-                            <li>Define true Christian worship as integral to daily life.</li>
-                            <li>Understand culture, music, and worship relationships.</li>
-                            <li>Practical aspects of building and nurturing worship teams.</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
-                        <h4 class="font-bold text-stone-800 mb-4 border-b border-stone-100 pb-2">Course Outline</h4>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 text-sm text-stone-600">
-                            <div class="flex items-start"><span class="text-amber-500 font-bold mr-2">1.</span> Worship Vision</div>
-                            <div class="flex items-start"><span class="text-amber-500 font-bold mr-2">2.</span> Lifestyle of a Worshiper</div>
-                            <div class="flex items-start"><span class="text-amber-500 font-bold mr-2">3.</span> Engaging the Spirit Realm</div>
-                            <div class="flex items-start"><span class="text-amber-500 font-bold mr-2">4.</span> What does a worship leader do?</div>
-                            <div class="flex items-start"><span class="text-amber-500 font-bold mr-2">5.</span> Spirit, Word & Worship</div>
-                            <div class="flex items-start"><span class="text-amber-500 font-bold mr-2">6.</span> Building Local Ministry</div>
-                            <div class="flex items-start"><span class="text-amber-500 font-bold mr-2">7.</span> Worship and Warfare</div>
-                            <div class="flex items-start"><span class="text-amber-500 font-bold mr-2">8.</span> How to choose songs?</div>
-                            <div class="flex items-start"><span class="text-amber-500 font-bold mr-2">9.</span> What happens when we play?</div>
-                            <div class="flex items-start"><span class="text-amber-500 font-bold mr-2">10.</span> Emerging Paradigms</div>
-                        </div>
-                    </div>
-                    <div class="mt-6 text-center">
-                         <button class="text-stone-500 hover:text-amber-600 text-sm font-semibold transition-colors"><i class="far fa-file-word mr-1"></i> Download Outline (DOCX)</button>
-                    </div>
-                </div>
-
-                <!-- Worship Music Course -->
-                <div class="bg-stone-900 rounded-2xl p-8 shadow-lg border-l-8 border-stone-600 text-white">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="bg-stone-700 text-stone-200 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide">30 Hours Duration</div>
-                        <i class="fas fa-music text-3xl text-stone-700"></i>
-                    </div>
-                    <h3 class="text-3xl font-bold text-white mb-4">Worship Music Course</h3>
-                    <p class="text-stone-400 mb-6 leading-relaxed">
-                        A deep dive into music theory, melodies, chords, progressions, and beats. Learn to be dynamic and pragmatic while approaching any song for worship.
-                    </p>
-
-                    <div class="bg-stone-800 p-6 rounded-xl border border-stone-700">
-                        <h4 class="font-bold text-white mb-4 border-b border-stone-600 pb-2">Course Outline</h4>
-                        <div class="space-y-4 text-sm text-stone-300">
-                            <!-- Module 1 -->
-                            <div>
-                                <h5 class="text-amber-500 font-bold mb-1">Fundamentals & Scales</h5>
-                                <p class="text-xs">Introduction, Formation of Major Scale, Understanding Minor Scales.</p>
-                            </div>
-                            <!-- Module 2 -->
-                            <div>
-                                <h5 class="text-amber-500 font-bold mb-1">Chords & Harmony</h5>
-                                <p class="text-xs">Triads (Major, Minor, Aug, Dim), Sevenths, Suspended, Complex Chord Formations.</p>
-                            </div>
-                            <!-- Module 3 -->
-                            <div>
-                                <h5 class="text-amber-500 font-bold mb-1">Chord Progressions (Roman Numeral)</h5>
-                                <p class="text-xs">Natural Formation, Analysis (I-IV-V, I-vi-IV-V7, I-ii-IV-V, etc.), Technical Terms.</p>
-                            </div>
-                            <!-- Module 4 -->
-                            <div>
-                                <h5 class="text-amber-500 font-bold mb-1">Rhythm & Application</h5>
-                                <p class="text-xs">Time Signatures (2/4, 4/4, 3/4, 6/8), Chord Colors, Playing Songs.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-6 text-center">
-                         <button class="text-stone-500 hover:text-amber-400 text-sm font-semibold transition-colors"><i class="far fa-file-word mr-1"></i> Download Outline (DOCX)</button>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Previous Workshops Gallery -->
-            <div class="border-t border-stone-200 pt-16">
-                <h3 class="text-2xl font-bold text-stone-800 mb-12 text-center">Previous Workshops</h3>
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-24">
                 
-                <!-- Highlights Grid (Chronological Order: 2012 -> 2025) -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16 max-w-7xl mx-auto">
-                    
-                    <!-- Event 1: Enrich 2012 -->
-                    <div class="group">
-                        <div class="overflow-hidden rounded-xl shadow-lg mb-4 aspect-video bg-stone-200">
-                            <img src="https://enrichministries.in/img/Enrich2012.jpg" 
-                                 alt="Enrich 2012" 
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                                 onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400?text=Enrich+2012'">
+                <!-- PLAYLIST 1: MUSIC THEORY -->
+                <div class="glass-panel p-6 rounded-xl border border-white/5">
+                    <div class="flex items-end gap-6 mb-8 border-b border-white/10 pb-6">
+                        <div class="w-24 h-24 bg-gradient-to-br from-cyan to-midnight rounded-md flex items-center justify-center shadow-[0_0_15px_rgba(0,255,255,0.2)] shrink-0">
+                            <i class="fas fa-sliders-h text-3xl text-white"></i>
                         </div>
-                        <h4 class="font-bold text-lg text-stone-800 text-center">Enrich 2012</h4>
+                        <div>
+                            <h3 class="text-4xl font-display text-offwhite uppercase tracking-tight">Theory & Mastery</h3>
+                            <p class="text-sm font-display text-cyan tracking-widest mt-1">5 Tracks • 10 Days</p>
+                        </div>
                     </div>
                     
-                    <!-- Event 2: Enrich 2016 -->
-                    <div class="group">
-                        <div class="overflow-hidden rounded-xl shadow-lg mb-4 aspect-video bg-stone-200">
-                            <img src="https://enrichministries.in/img/Enrich2016.jpg" 
-                                 alt="Enrich 2016" 
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                                 onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400?text=Enrich+2016'">
+                    <div class="space-y-1">
+                        <div class="flex items-start gap-4 p-3 rounded-md hover:bg-cyan/10 hover:border-l-4 hover:border-cyan transition-all group">
+                            <span class="text-gray-500 font-display text-xl w-6 text-right mt-0.5 group-hover:text-cyan">01</span>
+                            <div>
+                                <h4 class="font-display text-offwhite text-xl tracking-wide group-hover:text-cyan">Fundamentals & Scales</h4>
+                                <p class="text-graytext text-xs font-body mt-1">Intro, Major Scale Formation, Minor Scales.</p>
+                            </div>
                         </div>
-                        <h4 class="font-bold text-lg text-stone-800 text-center">Enrich 2016</h4>
-                    </div>
-
-                    <!-- Event 3: Enrich 2018 -->
-                    <div class="group">
-                        <div class="overflow-hidden rounded-xl shadow-lg mb-4 aspect-video bg-stone-200">
-                            <img src="image_2018.jpg" 
-                                 alt="Enrich 2018" 
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                                 onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400?text=Enrich+2018'">
+                        <div class="flex items-start gap-4 p-3 rounded-md hover:bg-cyan/10 hover:border-l-4 hover:border-cyan transition-all group">
+                            <span class="text-gray-500 font-display text-xl w-6 text-right mt-0.5 group-hover:text-cyan">02</span>
+                            <div>
+                                <h4 class="font-display text-offwhite text-xl tracking-wide group-hover:text-cyan">Chords & Harmony</h4>
+                                <p class="text-graytext text-xs font-body mt-1">Triads, Sevenths, Suspended, Complex Formations.</p>
+                            </div>
                         </div>
-                        <h4 class="font-bold text-lg text-stone-800 text-center">Enrich 2018</h4>
-                    </div>
-
-                    <!-- Event 4: Enrich 2021 -->
-                    <div class="group">
-                        <div class="overflow-hidden rounded-xl shadow-lg mb-4 aspect-video bg-stone-200">
-                            <img 
-                                src="image_2021.jpg" 
-                                 alt="Enrich 2021" 
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                 onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400?text=Enrich+2021'">
+                        <div class="flex items-start gap-4 p-3 rounded-md hover:bg-cyan/10 hover:border-l-4 hover:border-cyan transition-all group">
+                            <span class="text-gray-500 font-display text-xl w-6 text-right mt-0.5 group-hover:text-cyan">03</span>
+                            <div>
+                                <h4 class="font-display text-offwhite text-xl tracking-wide group-hover:text-cyan">Chord Progressions</h4>
+                                <p class="text-graytext text-xs font-body mt-1">Roman Numeral Analysis (I-IV-V, etc.), Technical Terms.</p>
+                            </div>
                         </div>
-                        <h4 class="font-bold text-lg text-stone-800 text-center">Enrich 2021</h4>
-                    </div>
-
-                    <!-- Event 5: Enrich 2023 -->
-                    <div class="group">
-                        <div class="overflow-hidden rounded-xl shadow-lg mb-4 aspect-video bg-stone-200">
-                            <img src="image_2023.jpg" 
-                                 alt="Enrich 2023" 
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                                 onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400?text=Enrich+2023'">
+                        <div class="flex items-start gap-4 p-3 rounded-md hover:bg-cyan/10 hover:border-l-4 hover:border-cyan transition-all group">
+                            <span class="text-gray-500 font-display text-xl w-6 text-right mt-0.5 group-hover:text-cyan">04</span>
+                            <div>
+                                <h4 class="font-display text-offwhite text-xl tracking-wide group-hover:text-cyan">Rhythm & Application</h4>
+                                <p class="text-graytext text-xs font-body mt-1">Time Signatures, Groove, Chord Colors.</p>
+                            </div>
                         </div>
-                        <h4 class="font-bold text-lg text-stone-800 text-center">Enrich 2023</h4>
-                    </div>
-
-                    <!-- Event 6: Enrich 2024 -->
-                    <div class="group">
-                        <div class="overflow-hidden rounded-xl shadow-lg mb-4 aspect-video bg-stone-200">
-                            <img src="image_2024.jpg" 
-                                 alt="Enrich 2024" 
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                                 onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400?text=Enrich+2024'">
+                        <div class="flex items-start gap-4 p-3 rounded-md hover:bg-cyan/10 hover:border-l-4 hover:border-cyan transition-all group">
+                            <span class="text-gray-500 font-display text-xl w-6 text-right mt-0.5 group-hover:text-cyan">05</span>
+                            <div>
+                                <h4 class="font-display text-offwhite text-xl tracking-wide group-hover:text-cyan">Playing Worship Songs</h4>
+                                <p class="text-graytext text-xs font-body mt-1">Working as a unified band, Musicianship, Practice habits.</p>
+                            </div>
                         </div>
-                        <h4 class="font-bold text-lg text-stone-800 text-center">Enrich 2024</h4>
                     </div>
+                </div>
 
-                    <!-- Event 7: Enrich 2025 -->
-                    <div class="group">
-    <div class="overflow-hidden rounded-xl shadow-lg mb-4 aspect-video bg-stone-200">
-        ![Enrich 2025](./enrichimage_2025.jpg)
+                <!-- PLAYLIST 2: WORSHIP LEADERSHIP -->
+                <div class="glass-panel p-6 rounded-xl border border-white/5">
+                    <div class="flex items-end gap-6 mb-8 border-b border-white/10 pb-6">
+                        <div class="w-24 h-24 bg-gradient-to-br from-gold to-midnight rounded-md flex items-center justify-center shadow-[0_0_15px_rgba(255,215,0,0.2)] shrink-0">
+                            <i class="fas fa-fire text-3xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-4xl font-display text-offwhite uppercase tracking-tight">Worship Leadership</h3>
+                            <p class="text-sm font-display text-gold tracking-widest mt-1">10 Tracks • 10 Days</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-1 h-[360px] overflow-y-auto pr-2">
+                        <div class="flex items-start gap-4 p-3 rounded-md hover:bg-gold/10 hover:border-l-4 hover:border-gold transition-all group">
+                            <span class="text-gray-500 font-display text-xl w-6 text-right mt-0.5 group-hover:text-gold">01</span>
+                            <div>
+                                <h4 class="font-display text-offwhite text-xl tracking-wide group-hover:text-gold">Worship Vision</h4>
+                                <p class="text-graytext text-xs font-body mt-1">Core purpose, biblical foundation, prophetic direction.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-3 rounded-md hover:bg-gold/10 hover:border-l-4 hover:border-gold transition-all group">
+                            <span class="text-gray-500 font-display text-xl w-6 text-right mt-0.5 group-hover:text-gold">02</span>
+                            <div>
+                                <h4 class="font-display text-offwhite text-xl tracking-wide group-hover:text-gold">Lifestyle of a Worshiper</h4>
+                                <p class="text-graytext text-xs font-body mt-1">Intimacy with God, public ministry from private devotion.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-3 rounded-md hover:bg-gold/10 hover:border-l-4 hover:border-gold transition-all group">
+                            <span class="text-gray-500 font-display text-xl w-6 text-right mt-0.5 group-hover:text-gold">03</span>
+                            <div>
+                                <h4 class="font-display text-offwhite text-xl tracking-wide group-hover:text-gold">Realm of the Spirit</h4>
+                                <p class="text-graytext text-xs font-body mt-1">Sensing movement, discerning atmosphere, flowing.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-3 rounded-md hover:bg-gold/10 hover:border-l-4 hover:border-gold transition-all group">
+                            <span class="text-gray-500 font-display text-xl w-6 text-right mt-0.5 group-hover:text-gold">04</span>
+                            <div>
+                                <h4 class="font-display text-offwhite text-xl tracking-wide group-hover:text-gold">The Leader's Role</h4>
+                                <p class="text-graytext text-xs font-body mt-1">Shepherd, priest, and musical director.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-3 rounded-md hover:bg-gold/10 hover:border-l-4 hover:border-gold transition-all group">
+                            <span class="text-gray-500 font-display text-xl w-6 text-right mt-0.5 group-hover:text-gold">05</span>
+                            <div>
+                                <h4 class="font-display text-offwhite text-xl tracking-wide group-hover:text-gold">Spirit, Word & Worship</h4>
+                                <p class="text-graytext text-xs font-body mt-1">Balancing theological depth with spiritual vitality.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-3 rounded-md hover:bg-gold/10 hover:border-l-4 hover:border-gold transition-all group">
+                            <span class="text-gray-500 font-display text-xl w-6 text-right mt-0.5 group-hover:text-gold">06</span>
+                            <div>
+                                <h4 class="font-display text-offwhite text-xl tracking-wide group-hover:text-gold">Local Church Ministry</h4>
+                                <p class="text-graytext text-xs font-body mt-1">Recruitment, training, discipleship, team culture.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-3 rounded-md hover:bg-gold/10 hover:border-l-4 hover:border-gold transition-all group">
+                            <span class="text-gray-500 font-display text-xl w-6 text-right mt-0.5 group-hover:text-gold">07</span>
+                            <div>
+                                <h4 class="font-display text-offwhite text-xl tracking-wide group-hover:text-gold">Worship and Warfare</h4>
+                                <p class="text-graytext text-xs font-body mt-1">Praise as a weapon, shifting atmospheres.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-3 rounded-md hover:bg-gold/10 hover:border-l-4 hover:border-gold transition-all group">
+                            <span class="text-gray-500 font-display text-xl w-6 text-right mt-0.5 group-hover:text-gold">08</span>
+                            <div>
+                                <h4 class="font-display text-offwhite text-xl tracking-wide group-hover:text-gold">Choosing Worship Songs</h4>
+                                <p class="text-graytext text-xs font-body mt-1">Curating setlists, serving the congregation.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-3 rounded-md hover:bg-gold/10 hover:border-l-4 hover:border-gold transition-all group">
+                            <span class="text-gray-500 font-display text-xl w-6 text-right mt-0.5 group-hover:text-gold">09</span>
+                            <div>
+                                <h4 class="font-display text-offwhite text-xl tracking-wide group-hover:text-gold">Impact of Music</h4>
+                                <p class="text-graytext text-xs font-body mt-1">Spiritual, physical, and emotional impact.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-3 rounded-md hover:bg-gold/10 hover:border-l-4 hover:border-gold transition-all group">
+                            <span class="text-gray-500 font-display text-xl w-6 text-right mt-0.5 group-hover:text-gold">10</span>
+                            <div>
+                                <h4 class="font-display text-offwhite text-xl tracking-wide group-hover:text-gold">Emerging Paradigms</h4>
+                                <p class="text-graytext text-xs font-body mt-1">Navigating trends, tech, and future directions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Details / Location / Pricing Section -->
+    <section id="details" class="py-24 bg-midnight border-t border-white/5 relative z-10">
+        <div class="container mx-auto px-4 lg:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-6xl md:text-8xl font-display text-white tracking-tighter">
+                    THE <span class="text-cyan text-neon-cyan">VITALS</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
+                <!-- Date -->
+                <div onclick="openCalendar()" class="glass-panel p-8 rounded-xl flex flex-col items-center text-center hover-glow-cyan border-t-2 border-cyan cursor-pointer group">
+                    <div class="text-5xl text-cyan mb-4 group-hover:scale-110 transition-transform">📅</div>
+                    <h4 class="font-display text-white text-3xl tracking-wider mb-2">When</h4>
+                    <p class="text-base font-body text-graytext group-hover:text-cyan transition flex items-center gap-2">May 11 - May 20, 2026 <i class="fas fa-external-link-alt text-[10px]"></i></p>
+                </div>
+
+                <!-- Location -->
+                <a href="https://maps.app.goo.gl/ivj7KQWnZHwTrWK57" target="_blank" rel="noopener noreferrer" class="glass-panel p-8 rounded-xl flex flex-col items-center text-center hover-glow-gold border-t-2 border-gold cursor-pointer group">
+                    <div class="text-5xl text-gold mb-4 group-hover:scale-110 transition-transform">📍</div>
+                    <h4 class="font-display text-white text-3xl tracking-wider mb-2">Where</h4>
+                    <p class="text-base font-body text-graytext group-hover:text-gold transition flex items-center gap-1">HBTC, Guwahati <i class="fas fa-external-link-alt text-[10px]"></i></p>
+                </a>
+
+                <!-- Age -->
+                <div class="glass-panel p-8 rounded-xl flex flex-col items-center text-center hover-glow-cyan border-t-2 border-cyan">
+                    <div class="text-5xl text-cyan mb-4">🙌</div>
+                    <h4 class="font-display text-white text-3xl tracking-wider mb-2">Who</h4>
+                    <p class="text-base font-body text-graytext">Age 13+</p>
+                </div>
+            </div>
+
+            <!-- Tickets / Pricing -->
+            <div class="max-w-4xl mx-auto bg-[#080d12] border border-white/10 p-8 md:p-12 rounded-2xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-cyan to-gold"></div>
+                <h3 class="text-5xl font-display text-center text-white mb-10 tracking-widest">WORKSHOP FEE</h3>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Residential -->
+                    <div class="glass-panel p-8 rounded-xl text-center border-cyan/30">
+                        <h4 class="text-2xl font-display text-cyan tracking-widest mb-2 uppercase">Residential</h4>
+                        <p class="text-5xl font-display text-white tracking-wider mb-6">₹8,000</p>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe12h5dQOfuV4T8M9U8c_XjAtjbfHPkPRDzYT-QdT3d5dmciw/viewform?usp=header" target="_blank" class="w-full block py-4 btn-solid-cyan font-display text-2xl tracking-widest rounded-sm uppercase">Select</a>
+                    </div>
+                    
+                    <!-- Non-Residential -->
+                    <div class="glass-panel p-8 rounded-xl text-center border-gold/30">
+                        <h4 class="text-2xl font-display text-gold tracking-widest mb-2 uppercase">Non-Residential</h4>
+                        <p class="text-5xl font-display text-white tracking-wider mb-6">₹5,000</p>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe12h5dQOfuV4T8M9U8c_XjAtjbfHPkPRDzYT-QdT3d5dmciw/viewform?usp=header" target="_blank" class="w-full block py-4 btn-solid-cyan font-display text-2xl tracking-widest rounded-sm uppercase bg-gold shadow-[0_0_15px_rgba(255,215,0,0.4)] hover:shadow-[0_0_25px_rgba(255,215,0,0.8)] border-gold text-midnight">Select</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Modal Popup -->
+    <div id="calendarModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-midnight/80 backdrop-blur-md transition-opacity duration-300">
+        <div class="glass-panel bg-[#080d12] border-2 border-cyan p-8 rounded-2xl w-[90%] max-w-md relative shadow-[0_0_40px_rgba(0,255,255,0.3)] transform scale-95 opacity-0 transition-all duration-300" id="calendarCard">
+            <button onclick="closeCalendar()" class="absolute top-4 right-4 text-gray-500 hover:text-cyan text-2xl transition-colors"><i class="fas fa-times"></i></button>
+            <h3 class="text-4xl font-display text-white mb-2 tracking-widest text-center">SAVE THE <span class="text-cyan text-neon-cyan">DATE</span></h3>
+            <p class="text-center font-body text-graytext text-sm mb-6">May 11 - May 20, 2026</p>
+            
+            <div class="bg-midnight rounded-xl p-4 border border-white/10">
+                <div class="flex justify-between items-center mb-4 px-2">
+                    <button class="text-gray-600 hover:text-white transition"><i class="fas fa-chevron-left"></i></button>
+                    <span class="font-display tracking-widest text-lg text-white">MAY 2026</span>
+                    <button class="text-gray-600 hover:text-white transition"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="grid grid-cols-7 gap-1 text-center font-display tracking-wider text-sm mb-2 text-gray-500">
+                    <div>SU</div><div>MO</div><div>TU</div><div>WE</div><div>TH</div><div>FR</div><div>SA</div>
+                </div>
+                <div class="grid grid-cols-7 gap-1 text-center font-body text-sm">
+                    <!-- Week 2 -->
+                    <div class="p-2 text-white">10</div>
+                    <div class="p-2 bg-cyan text-midnight font-bold rounded-lg shadow-[0_0_15px_rgba(0,255,255,0.5)] transform scale-110 relative z-10">11</div>
+                    <div class="p-2 bg-cyan/20 text-cyan font-bold rounded-lg">12</div>
+                    <div class="p-2 bg-cyan/20 text-cyan font-bold rounded-lg">13</div>
+                    <div class="p-2 bg-cyan/20 text-cyan font-bold rounded-lg">14</div>
+                    <div class="p-2 bg-cyan/20 text-cyan font-bold rounded-lg">15</div>
+                    <div class="p-2 bg-cyan/20 text-cyan font-bold rounded-lg">16</div>
+                    <!-- Week 3 -->
+                    <div class="p-2 bg-cyan/20 text-cyan font-bold rounded-lg">17</div>
+                    <div class="p-2 bg-cyan/20 text-cyan font-bold rounded-lg">18</div>
+                    <div class="p-2 bg-cyan/20 text-cyan font-bold rounded-lg">19</div>
+                    <div class="p-2 bg-gold text-midnight font-bold rounded-lg shadow-[0_0_15px_rgba(255,215,0,0.5)] transform scale-110 relative z-10">20</div>
+                    <div class="p-2 text-white">21</div>
+                    <div class="p-2 text-white">22</div>
+                    <div class="p-2 text-white">23</div>
+                </div>
+            </div>
+            
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=ENRICH+2026+Worship+Workshop&dates=20260511T033000Z/20260520T123000Z&details=Youth+worship+leadership+and+music+workshop.&location=Bengaluru" target="_blank" class="mt-6 w-full block py-3 btn-solid-cyan font-display text-xl tracking-widest text-center rounded-sm uppercase">
+                <i class="far fa-calendar-plus mr-2"></i> Add to Calendar
+            </a>
+        </div>
     </div>
-    <h4 class="font-bold text-lg text-stone-800 text-center">Enrich 2025</h4>
-</div>
 
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Classes Section (Online & Offline) -->
-    <section id="classes" class="py-20 bg-stone-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <span class="text-amber-600 font-bold uppercase tracking-wider text-sm">Join a Class</span>
-                <h2 class="text-4xl font-bold text-stone-900 mt-2 mb-4">Music Classes (Online & Offline)</h2>
-                <p class="text-stone-600 max-w-3xl mx-auto text-lg">
-                    Enrich Ministries has a dedicated team of musicians teaching guitar, keyboard, and drums in various styles including Classical, Western, and Indian. Join us at our centers across the city or connect online.
-                </p>
-            </div>
-
-            <!-- Faculty Team -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-bold text-stone-800 mb-8 border-b border-stone-200 pb-2 inline-block">Meet Our Faculty</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <!-- Keyboard & Guitar -->
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-100 hover:shadow-md transition-shadow">
-                        <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 text-amber-600 text-2xl">
-                            <i class="fas fa-guitar"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-stone-800 mb-4">Keyboard & Guitar</h4>
-                        <ul class="space-y-2 text-stone-600">
-                            <li class="font-medium">Robin Moses</li>
-                            <li class="font-medium">Saravanan</li>
-                            <li class="font-medium">Allan Benny</li>
-                        </ul>
-                    </div>
-
-                    <!-- Drums -->
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-100 hover:shadow-md transition-shadow">
-                        <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 text-amber-600 text-2xl">
-                            <i class="fas fa-drum"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-stone-800 mb-4">Drums</h4>
-                        <ul class="space-y-2 text-stone-600">
-                            <li class="font-medium">Romoreo M Emmanuel</li>
-                        </ul>
-                    </div>
-
-                    <!-- Vocals -->
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-100 hover:shadow-md transition-shadow">
-                        <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 text-amber-600 text-2xl">
-                            <i class="fas fa-microphone-alt"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-stone-800 mb-4">Vocals</h4>
-                        <ul class="space-y-2 text-stone-600">
-                            <li class="font-medium">Aruna Prasad</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Locations Grid -->
-            <h3 class="text-2xl font-bold text-stone-800 mb-8 border-b border-stone-200 pb-2 inline-block">Class Locations</h3>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                
-                <!-- Location 1: Marathahalli -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-stone-100 flex flex-col">
-                    <div class="bg-stone-800 p-4 text-white flex justify-between items-center">
-                        <h3 class="text-xl font-bold">Marathahalli Center</h3>
-                        <span class="bg-amber-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Offline</span>
-                    </div>
-                    <div class="p-6 flex-grow">
-                        <div class="mb-4">
-                            <div class="flex items-start mb-2 text-stone-700">
-                                <i class="far fa-clock w-6 mt-1 text-amber-600"></i>
-                                <div>
-                                    <span class="font-bold block">Saturdays</span>
-                                    <span>4:45 p.m. - 6:15 p.m.</span>
-                                </div>
-                            </div>
-                            <div class="flex items-start mb-2 text-stone-700">
-                                <i class="fas fa-music w-6 mt-1 text-amber-600"></i>
-                                <span>Drums, Keyboard, Guitar</span>
-                            </div>
-                            <div class="flex items-start text-stone-700">
-                                <i class="fas fa-map-marker-alt w-6 mt-1 text-amber-600"></i>
-                                <span class="text-sm">
-                                    Enrich Ministries,<br>
-                                    23, Aswathnagar, Marathahalli PO,<br>
-                                    Bengaluru - 560037, KA, India
-                                </span>
-                            </div>
-                        </div>
-                        <hr class="border-stone-100 my-4">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm gap-2">
-                            <div>
-                                <span class="block font-bold text-stone-800">Contact:</span>
-                                <a href="tel:+919916508490" class="text-stone-600 hover:text-amber-600 block"><i class="fas fa-phone mr-1"></i> +91 99165 08490 (Saravanan)</a>
-                                <a href="tel:+919916963808" class="text-stone-600 hover:text-amber-600 block"><i class="fas fa-phone mr-1"></i> +91 99169 63808 (Victor)</a>
-                            </div>
-                            <a href="mailto:coolsaru@gmail.com" class="text-amber-600 font-semibold hover:underline">Email Faculty</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Location 2: Kalyan Nagar -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-stone-100 flex flex-col">
-                    <div class="bg-stone-800 p-4 text-white flex justify-between items-center">
-                        <h3 class="text-xl font-bold">Kalyan Nagar Center</h3>
-                        <span class="bg-amber-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Offline</span>
-                    </div>
-                    <div class="p-6 flex-grow">
-                        <div class="mb-4">
-                            <div class="flex items-start mb-2 text-stone-700">
-                                <i class="far fa-clock w-6 mt-1 text-amber-600"></i>
-                                <div>
-                                    <span class="font-bold block">Thursdays</span>
-                                    <span>5:00 p.m. - 7:00 p.m.</span>
-                                </div>
-                            </div>
-                            <div class="flex items-start mb-2 text-stone-700">
-                                <i class="fas fa-music w-6 mt-1 text-amber-600"></i>
-                                <span>Vocals, Drums, Keyboard, Guitar</span>
-                            </div>
-                            <div class="flex items-start text-stone-700">
-                                <i class="fas fa-map-marker-alt w-6 mt-1 text-amber-600"></i>
-                                <span class="text-sm">
-                                    Lines and Spaces,<br>
-                                    Shop no 3, Francis Cottage,<br>
-                                    Chelekere, Bengaluru - 43, KA
-                                </span>
-                            </div>
-                        </div>
-                        <hr class="border-stone-100 my-4">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm gap-2">
-                            <div>
-                                <span class="block font-bold text-stone-800">Contact:</span>
-                                <a href="tel:+918892246474" class="text-stone-600 hover:text-amber-600 block"><i class="fas fa-phone mr-1"></i> +91 88922 46474 (Yesupatham)</a>
-                            </div>
-                            <a href="mailto:yesupatham@gmail.com" class="text-amber-600 font-semibold hover:underline">Email Faculty</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section (Moved to Bottom) -->
-    <section id="about" class="py-20 bg-stone-50 border-t border-stone-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row gap-12 items-start">
-                
-                <!-- Bio Text -->
-                <div class="lg:w-2/3">
-                    <span class="text-amber-600 font-bold uppercase tracking-wider text-sm">Our Founder</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mt-2 mb-6">Rev. Dr. Sunny Prasad</h2>
-                    <div class="prose prose-stone text-stone-600 leading-relaxed text-lg">
-                        <p class="mb-4">
-                            Rev. Dr. Sunny Prasad is the president of <strong>'Enrich Worship Music Academy'</strong>, a ministry that specializes in catering to the needs of the local church in the areas of worship and music.
-                        </p>
-                        <p class="mb-4">
-                            He is an ordained minister of the Assemblies of God, serving as the <strong>'Youth and Worship Coordinator'</strong> for the Central District Council of South India Assemblies of God (CDSIAG Karnataka & Goa).
-                        </p>
-                        <p class="mb-4">
-                            Apart from teaching the 'Worship Leadership' course at different Bible Colleges, he specializes in conducting Worship Team Workshops and developing resources for worship ministry. These include audio and video lessons, handbooks for musical instruments, songbooks, and chord charts for worship songs.
-                        </p>
-                        <p class="mb-4">
-                            He holds a <strong>'Doctorate of Ministry'</strong> from the Center for Global Leadership Development (SABC). He resides in Bangalore with his wife Sunitha, who is a 'Family Life Educator'. They are blessed with two beautiful daughters, Sthuthi and Shreya.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Profile Image & Links -->
-                <div class="lg:w-1/3">
-                    <div class="bg-white rounded-2xl p-6 shadow-lg border border-stone-100 text-center">
-                        <div class="w-48 h-48 mx-auto bg-gray-200 rounded-full mb-6 overflow-hidden border-4 border-stone-50 shadow-md flex items-center justify-center">
-                            <!-- Updated Profile Image -->
-                            <img src="https://d502jbuhuh9wk.cloudfront.net/orgData/61f790630cf2b08938f98848/pages/assets/images/TQZ9ydownload.jpg" 
-                                 alt="Rev. Dr. Sunny Prasad" 
-                                 class="w-full h-full object-cover" 
-                                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'">
-                        </div>
-                        <h3 class="text-xl font-bold text-stone-800">Rev. Dr. Sunny Prasad</h3>
-                        <p class="text-amber-600 font-medium text-sm mb-6">President, Enrich Ministries</p>
-                        
-                        <div class="flex justify-center gap-4">
-                            <a href="https://www.facebook.com/sunnyprasad.bangalore" target="_blank" class="w-10 h-10 rounded-full bg-stone-100 text-blue-600 shadow-sm flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300">
-                                <i class="fab fa-facebook-f text-lg"></i>
-                            </a>
-                            <a href="https://www.instagram.com/sunnyprasad.bangalore/" target="_blank" class="w-10 h-10 rounded-full bg-stone-100 text-pink-600 shadow-sm flex items-center justify-center hover:bg-pink-600 hover:text-white transition-all duration-300">
-                                <i class="fab fa-instagram text-lg"></i>
-                            </a>
-                            <a href="https://www.youtube.com/channel/UCzhsIByall1kzeEzhG_ME4w" target="_blank" class="w-10 h-10 rounded-full bg-stone-100 text-red-600 shadow-sm flex items-center justify-center hover:bg-red-600 hover:text-white transition-all duration-300">
-                                <i class="fab fa-youtube text-lg"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="bg-stone-900 text-stone-300 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <!-- Brand -->
-                <div class="col-span-1 md:col-span-1">
-                    <span class="text-2xl font-bold text-white tracking-tight block mb-4">
-                        <i class="fas fa-church text-amber-500 mr-2"></i>Enrich
-                    </span>
-                    <p class="text-stone-400 text-sm">
-                        Building a community of skilled and spiritual worshippers for the global church.
-                    </p>
-                </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-white font-semibold uppercase tracking-wider mb-4">Explore</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#academy" class="hover:text-amber-500 transition-colors">Academy</a></li>
-                        <li><a href="#workshop" class="hover:text-amber-500 transition-colors">Workshops</a></li>
-                        <li><a href="#resources" class="hover:text-amber-500 transition-colors">Resources</a></li>
-                    </ul>
-                </div>
-
-                <!-- Legal -->
-                <div>
-                    <h3 class="text-white font-semibold uppercase tracking-wider mb-4">Legal</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-amber-500 transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-amber-500 transition-colors">Terms of Service</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact -->
-                <div>
-                    <h3 class="text-white font-semibold uppercase tracking-wider mb-4">Contact</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li class="flex items-center"><i class="fas fa-envelope w-6 text-amber-500"></i> info@enrichministries.org</li>
-                        <li class="flex items-center"><i class="fas fa-phone w-6 text-amber-500"></i> 9844198441</li>
-                        <li class="flex items-center gap-4 mt-4">
-                            <a href="#" class="text-stone-400 hover:text-white transition-colors"><i class="fab fa-facebook fa-lg"></i></a>
-                            <a href="#" class="text-stone-400 hover:text-white transition-colors"><i class="fab fa-instagram fa-lg"></i></a>
-                            <a href="#" class="text-stone-400 hover:text-white transition-colors"><i class="fab fa-youtube fa-lg"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-stone-800 pt-8 text-center text-sm text-stone-500">
-                &copy; 2024 Enrich Ministries. All rights reserved.
-            </div>
-        </div>
+    <footer class="bg-black py-8 text-center border-t border-white/10">
+        <p class="font-body text-sm text-gray-500">
+            &copy; 2026 AG National Youth Movement. Built for the next generation of worship leaders.
+        </p>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/919844105095" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:bg-green-600 transition-all duration-300 z-50 hover:scale-110 group">
-        <i class="fab fa-whatsapp text-3xl"></i>
-        <span class="absolute right-16 bg-white text-stone-800 text-xs font-bold px-3 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Chat with us</span>
-    </a>
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
 
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+        
+        const menuLinks = menu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Generate Stage Particles
+        const container = document.getElementById('particle-container');
+        const colors = ['#00FFFF', '#FFD700']; // Cyan and Gold
+        
+        for (let i = 0; i < 30; i++) {
+            let particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            let size = Math.random() * 6 + 2; 
+            let left = Math.random() * 100; 
+            let duration = Math.random() * 4 + 3; 
+            let delay = Math.random() * 5; 
+            let color = colors[Math.floor(Math.random() * colors.length)];
+            
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = left + '%';
+            particle.style.background = color;
+            particle.style.boxShadow = `0 0 10px ${color}`;
+            particle.style.animationDuration = duration + 's';
+            particle.style.animationDelay = delay + 's';
+            
+            container.appendChild(particle);
+        }
+
+        // Calendar Popup Logic
+        function openCalendar() {
+            const modal = document.getElementById('calendarModal');
+            const card = document.getElementById('calendarCard');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Small delay to allow display:flex to apply before animating opacity/transform
+            setTimeout(() => {
+                card.classList.remove('scale-95', 'opacity-0');
+                card.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeCalendar() {
+            const modal = document.getElementById('calendarModal');
+            const card = document.getElementById('calendarCard');
+            card.classList.remove('scale-100', 'opacity-100');
+            card.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }, 300); // Wait for CSS transition to finish
+        }
+
+        // Close calendar when clicking outside the card
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('calendarModal');
+            if (e.target === modal) {
+                closeCalendar();
+            }
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
